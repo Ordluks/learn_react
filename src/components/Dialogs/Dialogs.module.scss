@@ -1,0 +1,13 @@
+.dialogs {
+	display: grid;
+	// grid-template-rows: 20px 1fr;
+	// grid-template-columns: 100px 1fr;
+	grid-template:
+	'h h h'
+	'd m m';
+
+	> h1 {
+		grid-area: h;
+		font-size: 30px;
+	}
+}

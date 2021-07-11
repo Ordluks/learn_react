@@ -1,0 +1,33 @@
+.item {
+	display: grid;
+	grid-template: 
+	"a n n"
+	"a m ld";
+	grid-template-columns: 50px 1fr 70px;
+	grid-template-rows: 20px 1fr;
+	column-gap: 10px;
+
+	margin: 30px 0;
+
+	.avatar {
+		grid-area: a;
+
+		$size: 50px;
+		width: $size;
+		height: $size;
+		border-radius: 50%;
+	}
+	
+	.name {
+		grid-area: n;
+		color: rgba(0, 0, 0, 0.4);
+	}
+
+	.msg {
+		grid-area: m;
+	}
+
+	.likes {
+		grid-area: ld;
+	}
+}
