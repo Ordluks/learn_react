@@ -1,10 +1,10 @@
 import state from './redux/state'
-import { addPost } from './redux/state';
+import { addPost, setPostText } from './redux/state';
 import { renderDocument } from './render';
 import reportWebVitals from './reportWebVitals';
 
 
-renderDocument(state, addPost)
+renderDocument(state, addPost, setPostText)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -12,15 +12,15 @@ import Music from './components/Music/Music'
 import Settings from './components/Settings/Settings'
 
 
-const App = ({ state, addPost }) => {
+const App = ({ state, addPost, setPostText }) => {
 	return (
 		<BrowserRouter>
 			<div className="wrapper">
 				<Header />
 				<Sidebar friends={state.friends} />
 				<div className='mainContent'>
-					<Route exact path='/' component={() => {return (<h1>Главная</h1>)}} />
-					<Route exact path='/profile' render={ () => <Profile posts={state.posts} addPost={addPost} /> } />
+					<Route exact path='/' component={ () => {return (<h1>Главная</h1>)}} />
+					<Route exact path='/profile' render={ () => <Profile profilePage={state.profilePage} addPost={addPost} setPostText={setPostText} /> } />
 					<Route path='/dialogs' render={ () => <Dialogs dialogs={state.dialogs} massages={state.massages} /> } />
 					<Route path='/news' component={News} />
 					<Route path='/music' component={Music} />
