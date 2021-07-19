@@ -12,7 +12,7 @@ import Music from './components/Music/Music'
 import Settings from './components/Settings/Settings'
 
 
-const App = ({ state }) => {
+const App = ({ state, addPost }) => {
 	return (
 		<BrowserRouter>
 			<div className="wrapper">
@@ -20,7 +20,7 @@ const App = ({ state }) => {
 				<Sidebar friends={state.friends} />
 				<div className='mainContent'>
 					<Route exact path='/' component={() => {return (<h1>Главная</h1>)}} />
-					<Route exact path='/profile' render={ () => <Profile posts={state.posts} /> } />
+					<Route exact path='/profile' render={ () => <Profile posts={state.posts} addPost={addPost} /> } />
 					<Route path='/dialogs' render={ () => <Dialogs dialogs={state.dialogs} massages={state.massages} /> } />
 					<Route path='/news' component={News} />
 					<Route path='/music' component={Music} />

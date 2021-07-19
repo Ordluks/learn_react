@@ -7,7 +7,7 @@ import Massages from './Massages/Massages'
 const Dialogs = ({ dialogs, massages }) => {
 	return (
 		<div className={styles.dialogs}>
-			<h1>Dialogs</h1>
+			<h1>Диалоги</h1>
 			<DialogsList dialogs={dialogs} />
 			<Massages massages={massages} />
 		</div>

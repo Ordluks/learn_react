@@ -1,9 +1,14 @@
 .item {
+	display: flex;
+	align-items: center;
+	margin-top: 20px;
 
 	$imgSize: 40px;
 
-	.profImg {
+	img {
 		width: $imgSize;
 		height: $imgSize;
+
+		margin-right: 15px;
 	}
 }

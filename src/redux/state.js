@@ -1,3 +1,5 @@
+import { renderDocument } from "../render"
+
 const state = {
 	posts: [
 		{
@@ -59,6 +61,17 @@ const state = {
 			img: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
 		}
 	]
+}
+
+export let addPost = (text) => {
+	let newPost = {
+		id: state.posts.length + 1,
+		text: text,
+		likes: 0
+	}
+
+	state.posts.push(newPost)
+	renderDocument(state, addPost)
 }
 
 export default state

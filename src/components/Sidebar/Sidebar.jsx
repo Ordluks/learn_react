@@ -7,8 +7,15 @@ import ImportantFriends from './ImportantFriends/ImportantFriends'
 const Sidebar = ({ friends }) => {
 	return (
 		<div className={styles.sidebar}>
-			<NavBar />
-			<ImportantFriends friends={friends} />
+			<div>
+				<h2>Навигация</h2>
+				<NavBar />
+			</div>
+			<div>
+				<h2>Друзья</h2>
+				<ImportantFriends friends={friends} />
+			</div>
+			
 		</div>
 	)
 }

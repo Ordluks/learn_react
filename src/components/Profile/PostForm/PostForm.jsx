@@ -1,10 +1,18 @@
 import React from 'react'
 import styles from './PostForm.module.scss'
 
-const PostForm = () => {
+const PostForm = ({ addPost }) => {
+	const postTextRef = React.createRef()
+
+	const onAddClick = () => {
+		let text = postTextRef.current.value
+		addPost(text)
+	}
+
 	return (
-		<div className='posts-form'>
-			post form
+		<div className={styles.postForm}>
+			<textarea ref={postTextRef}></textarea>
+			<button className={styles.addPost} onClick={onAddClick}>Добавить</button>
 		</div>
 	)
 }
