@@ -65,10 +65,10 @@ const state = {
 	]
 }
 
-export const addPost = text => {
+export const addPost = () => {
 	const newPost = {
 		id: state.profilePage.posts.length + 1,
-		text: text,
+		text: state.profilePage.taxtareaValue,
 		likes: 0
 	}
 
