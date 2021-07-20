@@ -1,10 +1,23 @@
-import state from './redux/state'
-import { addPost, setPostText } from './redux/state';
-import { renderDocument } from './render';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import store from './redux/state'
 import reportWebVitals from './reportWebVitals';
 
 
-renderDocument(state, addPost, setPostText)
+const renderDocument = store => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App store={store} />
+    </React.StrictMode>,
+    document.getElementById('root')
+  )
+}
+
+renderDocument(store)
+
+store.subscribe(() => {renderDocument(store)})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
