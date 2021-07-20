@@ -21,9 +21,7 @@ const App = ({ store }) => {
 				<div className='mainContent'>
 					<Route exact path='/' component={ () => {return (<h1>Главная</h1>)}} />
 					<Route exact path='/profile' render={ () =>
-						<Profile profilePage={store.getState().profilePage}
-										addPost={store.addPost.bind(store)}
-										setPostText={store.setPostText.bind(store)} /> } />
+						<Profile profilePage={store.getState().profilePage} dispatch={store.dispatch.bind(store)}/> } />
 					<Route path='/dialogs' render={ () => <Dialogs dialogs={store.getState().dialogs} massages={store.getState().massages} /> } />
 					<Route path='/news' component={News} />
 					<Route path='/music' component={Music} />

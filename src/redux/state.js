@@ -64,12 +64,12 @@ let store = {
 		]
 	},
 
-	getState() {
-		return this.__state
-	},
-
 	__callSubscriber() {
 		console.log('Render function is not defined')
+	},
+
+	getState() {
+		return this.__state
 	},
 
 	addPost() {
@@ -90,6 +90,26 @@ let store = {
 
 	subscribe(observer) {
 		this.__callSubscriber = observer
+	},
+
+	dispatch(action) {
+		switch (action.type) {
+			case 'ADD-POST':
+				const newPost = {
+					id: this.__state.profilePage.posts.length + 1,
+					text: this.__state.profilePage.taxtareaValue,
+					likes: 0
+				}
+			
+				this.__state.profilePage.posts.push(newPost)
+				this.__callSubscriber()
+				break
+
+			case 'SET-NEW-POST-TEXT':
+				this.__state.profilePage.taxtareaValue = action.payload
+				this.__callSubscriber()
+				break
+		}
 	}
 }
 

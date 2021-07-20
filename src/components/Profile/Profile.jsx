@@ -5,7 +5,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 import PostForm from './PostForm/PostForm'
 import PostsList from './PostsList/PostsList'
 
-const Profile = ({ profilePage, addPost, setPostText }) => {
+const Profile = ({ profilePage, dispatch }) => {
 	const { posts, taxtareaValue } = profilePage
 
 	return (
@@ -14,8 +14,8 @@ const Profile = ({ profilePage, addPost, setPostText }) => {
 			<ProfileInfo />
 			<div>
 				My Posts
-				<PostForm addPost={addPost} setPostText={setPostText} taxtareaValue={taxtareaValue} />
-				<PostsList posts={posts} taxtareaValue={taxtareaValue} />
+				<PostForm dispatch={dispatch} taxtareaValue={taxtareaValue} />
+				<PostsList posts={posts} />
 			</div>
 		</div>
 	)
