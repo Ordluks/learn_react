@@ -22,7 +22,8 @@ const App = ({ store }) => {
 					<Route exact path='/' component={ () => {return (<h1>Главная</h1>)}} />
 					<Route exact path='/profile' render={ () =>
 						<Profile profilePage={store.getState().profilePage} dispatch={store.dispatch.bind(store)}/> } />
-					<Route path='/dialogs' render={ () => <Dialogs dialogs={store.getState().dialogs} massages={store.getState().massages} /> } />
+					<Route path='/dialogs' render={ () =>
+						<Dialogs dialogsPage={store.getState().dialogsPage} dispatch={store.dispatch.bind(store)} /> } />
 					<Route path='/news' component={News} />
 					<Route path='/music' component={Music} />
 					<Route path='/settings' component={Settings} />

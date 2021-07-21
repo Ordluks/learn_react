@@ -1,4 +1,9 @@
-let store = {
+const ADD_POST = 'ADD-POST'
+const SET_NEW_POST_TEXT = 'SET-NEW-POST-TEXT'
+const ADD_MASSAGE = 'ADD-MASSAGE'
+const SET_NEW_MSG_TEXT = 'SET-NEW-MSG-TEXT'
+
+const store = {
 	__state: {
 		profilePage: {
 			taxtareaValue: '',
@@ -30,6 +35,7 @@ let store = {
 					name: 'Коля'
 				}
 			],
+			newMassageText: 'test',
 			massages: [
 				{
 					id: 1,
@@ -72,29 +78,13 @@ let store = {
 		return this.__state
 	},
 
-	addPost() {
-		const newPost = {
-			id: this.__state.profilePage.posts.length + 1,
-			text: this.__state.profilePage.taxtareaValue,
-			likes: 0
-		}
-	
-		this.__state.profilePage.posts.push(newPost)
-		this.__callSubscriber()
-	},
-
-	setPostText(text) {
-		this.__state.profilePage.taxtareaValue = text
-		this.__callSubscriber()
-	},
-
 	subscribe(observer) {
 		this.__callSubscriber = observer
 	},
 
 	dispatch(action) {
 		switch (action.type) {
-			case 'ADD-POST':
+			case ADD_POST:
 				const newPost = {
 					id: this.__state.profilePage.posts.length + 1,
 					text: this.__state.profilePage.taxtareaValue,
@@ -102,16 +92,46 @@ let store = {
 				}
 			
 				this.__state.profilePage.posts.push(newPost)
-				this.__callSubscriber()
 				break
 
-			case 'SET-NEW-POST-TEXT':
-				this.__state.profilePage.taxtareaValue = action.payload
-				this.__callSubscriber()
+			case SET_NEW_POST_TEXT:
+				this.__state.profilePage.taxtareaValue = action.text
+				break
+
+			case ADD_MASSAGE:
+				const newMassage = {
+					id: this.__state.dialogsPage.massages.length + 1,
+					text: this.__state.dialogsPage.newMassageText
+				}
+
+				this.__state.dialogsPage.massages.push(newMassage)
+				break
+			
+			case SET_NEW_MSG_TEXT:
+				this.__state.dialogsPage.newMassageText = action.text
 				break
 		}
+
+		this.__callSubscriber()
 	}
 }
 
+export const addPost = () => ({
+	type: ADD_POST
+})
+
+export const setNewPostText = text => ({
+	type: SET_NEW_POST_TEXT,
+	text
+})
+
+export const addMassage = () => ({
+	type: ADD_MASSAGE
+})
+
+export const setNewMassageText = text => ({
+	type: SET_NEW_MSG_TEXT,
+	text
+})
+
 export default store
-window.store = store
