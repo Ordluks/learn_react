@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './PostForm.module.scss'
-import { addPost, setNewPostText } from '../../../redux/reducers/profileReducer'
+import { addPost, setNewPostText } from '../../../mystore/reducers/profileReducer'
 
 const PostForm = ({ dispatch, taxtareaValue }) => {
 	const postTextRef = React.createRef()

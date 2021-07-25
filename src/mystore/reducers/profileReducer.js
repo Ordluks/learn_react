@@ -2,12 +2,7 @@ const ADD_POST = 'ADD-POST'
 const SET_NEW_POST_TEXT = 'SET-NEW-POST-TEXT'
 
 
-const initialState = {
-	posts: [],
-	taxtareaValue: ''
-}
-
-const profileReducer = (state = initialState, action) => {
+const profileReducer = (state, action) => {
 	switch (action.type) {
 		case ADD_POST:
 			const newPost = {
