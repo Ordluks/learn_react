@@ -1,7 +1,7 @@
 import React from 'react'
 import MassageItem from './MassageItem/MassageItem'
 import styles from './Massages.module.scss'
-import { addMassage, setNewMassageText } from '../../../redux/state'
+import { addMassage, setNewMassageText } from '../../../redux/reducers/dialogsReducer'
 
 const Massages = ({ massages, newMassage, dispatch }) => {
 	const postTextRef = React.createRef()

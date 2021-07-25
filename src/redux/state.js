@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST'
-const SET_NEW_POST_TEXT = 'SET-NEW-POST-TEXT'
-const ADD_MASSAGE = 'ADD-MASSAGE'
-const SET_NEW_MSG_TEXT = 'SET-NEW-MSG-TEXT'
+import dialogsReducer from './reducers/dialogsReducer'
+import profileReducer from './reducers/profileReducer'
+
 
 const store = {
 	__state: {
@@ -70,8 +69,12 @@ const store = {
 		]
 	},
 
-	__callSubscriber() {
-		console.log('Render function is not defined')
+	__subscribers: [],
+
+	__callSubscribers() {
+		for (let i = 0; i < this.__subscribers.length; i++) {
+			this.__subscribers[i]()
+		}
 	},
 
 	getState() {
@@ -79,59 +82,15 @@ const store = {
 	},
 
 	subscribe(observer) {
-		this.__callSubscriber = observer
+		this.__subscribers.push(observer)
 	},
 
 	dispatch(action) {
-		switch (action.type) {
-			case ADD_POST:
-				const newPost = {
-					id: this.__state.profilePage.posts.length + 1,
-					text: this.__state.profilePage.taxtareaValue,
-					likes: 0
-				}
-			
-				this.__state.profilePage.posts.push(newPost)
-				break
+		this.__state.profilePage = profileReducer(this.__state.profilePage, action)
+		this.__state.dialogsPage = dialogsReducer(this.__state.dialogsPage, action)
 
-			case SET_NEW_POST_TEXT:
-				this.__state.profilePage.taxtareaValue = action.text
-				break
-
-			case ADD_MASSAGE:
-				const newMassage = {
-					id: this.__state.dialogsPage.massages.length + 1,
-					text: this.__state.dialogsPage.newMassageText
-				}
-
-				this.__state.dialogsPage.massages.push(newMassage)
-				break
-			
-			case SET_NEW_MSG_TEXT:
-				this.__state.dialogsPage.newMassageText = action.text
-				break
-		}
-
-		this.__callSubscriber()
+		this.__callSubscribers()
 	}
 }
-
-export const addPost = () => ({
-	type: ADD_POST
-})
-
-export const setNewPostText = text => ({
-	type: SET_NEW_POST_TEXT,
-	text
-})
-
-export const addMassage = () => ({
-	type: ADD_MASSAGE
-})
-
-export const setNewMassageText = text => ({
-	type: SET_NEW_MSG_TEXT,
-	text
-})
 
 export default store
