@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Sidebar.module.scss'
 
 import NavBar from './NavBar/NavBar'
-import ImportantFriends from './ImportantFriends/ImportantFriends'
+import ImportantFriendsContainer from './ImportantFriends/ImportantFriendsContainer'
 
 const Sidebar = ({ friends }) => {
 	return (
@@ -13,7 +13,7 @@ const Sidebar = ({ friends }) => {
 			</div>
 			<div>
 				<h2>Друзья</h2>
-				<ImportantFriends friends={friends} />
+				<ImportantFriendsContainer />
 			</div>
 			
 		</div>

@@ -1,22 +1,18 @@
 import React from 'react'
 import styles from './PostForm.module.scss'
-import { addPost, setNewPostText } from '../../../mystore/reducers/profileReducer'
 
-const PostForm = ({ dispatch, taxtareaValue }) => {
+
+const PostForm = ({ textChange, onAddBtnClick, newPostText }) => {
 	const postTextRef = React.createRef()
 
 	const onInput = () => {
 		const text = postTextRef.current.value
-		dispatch(setNewPostText(text))
-	}
-
-	const onAddBtnClick = () => {
-		dispatch(addPost())
+		textChange(text)
 	}
 
 	return (
 		<div className={styles.postForm}>
-			<textarea ref={postTextRef} onChange={onInput} value={taxtareaValue} />
+			<textarea ref={postTextRef} onChange={onInput} value={newPostText} />
 			<button className={styles.addPost} onClick={onAddBtnClick}>Добавить</button>
 		</div>
 	)

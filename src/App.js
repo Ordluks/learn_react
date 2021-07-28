@@ -17,11 +17,11 @@ const App = ({ store }) => {
 		<BrowserRouter>
 			<div className="wrapper">
 				<Header />
-				<Sidebar friends={store.getState().friends} />
+				<Sidebar />
 				<div className='mainContent'>
 					<Route exact path='/' component={ () => {return (<h1>Главная</h1>)}} />
 					<Route exact path='/profile' render={ () =>
-						<Profile profilePage={store.getState().profilePage} dispatch={store.dispatch.bind(store)}/> } />
+						<Profile /> } />
 					<Route path='/dialogs' render={ () =>
 						<Dialogs dialogsPage={store.getState().dialogsPage} dispatch={store.dispatch.bind(store)} /> } />
 					<Route path='/news' component={News} />

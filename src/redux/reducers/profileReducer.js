@@ -4,7 +4,7 @@ const SET_NEW_POST_TEXT = 'SET-NEW-POST-TEXT'
 
 const initialState = {
 	posts: [],
-	taxtareaValue: ''
+	newPostText: 'text'
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -12,7 +12,7 @@ const profileReducer = (state = initialState, action) => {
 		case ADD_POST:
 			const newPost = {
 				id: state.posts.length + 1,
-				text: state.taxtareaValue,
+				text: state.newPostText,
 				likes: 0
 			}
 		
@@ -20,7 +20,7 @@ const profileReducer = (state = initialState, action) => {
 			break
 
 		case SET_NEW_POST_TEXT:
-			state.taxtareaValue = action.text
+			state.newPostText = action.text
 			break
 	}
 

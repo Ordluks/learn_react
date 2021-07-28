@@ -3,16 +3,12 @@ import MassageItem from './MassageItem/MassageItem'
 import styles from './Massages.module.scss'
 import { addMassage, setNewMassageText } from '../../../mystore/reducers/dialogsReducer'
 
-const Massages = ({ massages, newMassage, dispatch }) => {
+const Massages = ({ textChange, postBtnClick, massages, newMassage }) => {
 	const postTextRef = React.createRef()
 
 	const onInput = () => {
 		const text = postTextRef.current.value
-		dispatch(setNewMassageText(text))
-	}
-
-	const postBtnClick = () => {
-		dispatch(addMassage())
+		textChange(text)
 	}
 
 	return (
